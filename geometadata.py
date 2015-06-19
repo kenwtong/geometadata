@@ -66,7 +66,7 @@ def make_metadata_file(spatial_file):
 
         Parameters:
         @spatial_file: Full path to the XML file of the input spatial file
-                           that will be created.
+                       that will be created.
 
         Returns:
         None
@@ -197,13 +197,13 @@ def update_metadata(spatial_file, metadata_update_file):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Update Metadata')
+    parser = argparse.ArgumentParser(description='Geometadata')
     parser.add_argument('-f', '--file', action='store', dest='spatial_file',
         required=True,
         help=('Full path to the Shapefile that will have its metadata updated.'
               ' File should be a Shapefile, GeoTiff, JPEG, or PNG'))
     parser.add_argument('-m', '--metadata', action='store', dest='metadata_json_file',
-                        required=True, help='Full path to the metadata JSON file with the updated metadata.')
+        required=True, help='Full path to the metadata JSON file with the updated metadata.')
     args = parser.parse_args()
     update_metadata(args.spatial_file, args.metadata_json_file)
 
