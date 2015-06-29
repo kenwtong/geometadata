@@ -12,7 +12,7 @@
 # Author:      Ken Tong
 #
 # Created:     17/06/2015
-# Updated:     19/06/2015
+# Updated:     29/06/2015
 #-------------------------------------------------------------------------------
 
 import argparse
@@ -39,12 +39,10 @@ def __get_spatial_file_xml(spatial_file):
 
         A skeleton metadata XML file will also be created if necessary.
     """
-    SPATIAL_EXTENSIONS_LIST = ['.jpg', '.jpeg', '.png', '.shp', '.tif', '.tiff']
+    SPATIAL_EXTENSIONS = ('.jpg', '.jpeg', '.png', '.shp', '.tif', '.tiff')
 
     if os.path.isfile(spatial_file):
-        filename = os.path.splitext(os.path.basename(spatial_file))[0]
-        extension = os.path.splitext(os.path.basename(spatial_file))[1]
-        if extension in SPATIAL_EXTENSIONS_LIST:
+        if spatial_file.endswith(SPATIAL_EXTENSIONS):
             print 'Spatial file found:', spatial_file
             spatial_file_xml = '.'.join([spatial_file, 'xml'])
             if not os.path.isfile(spatial_file_xml):
@@ -72,7 +70,7 @@ def make_metadata_file(spatial_file):
         None
     """
 
-    def get_format_name(extension):
+    def __get_format_name(extension):
         """
         Function returns the long name of the spatial format.
 
